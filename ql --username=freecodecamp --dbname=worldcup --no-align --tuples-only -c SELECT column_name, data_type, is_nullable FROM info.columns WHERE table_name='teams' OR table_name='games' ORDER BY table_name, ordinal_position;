@@ -1,0 +1,12 @@
+                                    Table "public.teams"
+ Column  |       Type        | Collation | Nullable |                Default                 
+---------+-------------------+-----------+----------+----------------------------------------
+ team_id | integer           |           | not null | nextval('teams_team_id_seq'::regclass)
+ name    | character varying |           | not null | 
+Indexes:
+    "teams_pkey" PRIMARY KEY, btree (team_id)
+    "teams_name_key" UNIQUE CONSTRAINT, btree (name)
+Referenced by:
+    TABLE "games" CONSTRAINT "games_opponent_id_fkey" FOREIGN KEY (opponent_id) REFERENCES teams(team_id)
+    TABLE "games" CONSTRAINT "games_winner_id_fkey" FOREIGN KEY (winner_id) REFERENCES teams(team_id)
+
